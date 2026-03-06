@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireframe — Bookkeeping Services | N-Accounting</title>
+<style>
+  :root {
+    --bg:        #ffffff;
+    --bg-light:  #f4f4f4;
+    --bg-mid:    #e0e0e0;
+    --bg-dark:   #b0b0b0;
+    --bg-darker: #888888;
+    --border:    #aaaaaa;
+    --border-dk: #777777;
+    --text-dark: #1a1a1a;
+    --text-mid:  #555555;
+    --text-light:#999999;
+    --btn-fill:  #444444;
+    --font: Arial, Helvetica, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); color: var(--text-dark); background: var(--bg); font-size: 15px; line-height: 1.6; }
+
+  /* ── META BANNER ── */
+  .wf-banner {
+    background: var(--text-dark); color: #fff;
+    text-align: center; padding: 7px 16px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
+  }
+
+  /* ── SECTION LABEL ── */
+  .sec-label {
+    display: inline-block; font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-light);
+    border: 1px dashed var(--border); padding: 2px 8px;
+    margin-bottom: 12px; font-weight: bold;
+  }
+
+  /* ── SHARED ── */
+  .container { max-width: 1100px; margin: 0 auto; }
+  section, .block { padding: 64px 40px; }
+  h1 { font-size: 36px; font-weight: bold; color: var(--text-dark); line-height: 1.2; margin-bottom: 16px; }
+  h2 { font-size: 26px; font-weight: bold; color: var(--text-dark); line-height: 1.3; margin-bottom: 14px; }
+  h3 { font-size: 16px; font-weight: bold; color: var(--text-dark); margin-bottom: 8px; }
+  h4 { font-size: 12px; font-weight: bold; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  p  { color: var(--text-mid); font-size: 14px; margin-bottom: 10px; }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block; background: var(--btn-fill); color: #fff;
+    padding: 12px 28px; font-size: 14px; font-weight: bold;
+    font-family: var(--font); border: 2px solid var(--btn-fill);
+    cursor: pointer; text-decoration: none;
+  }
+  .btn-ghost {
+    display: inline-block; background: transparent; color: #ddd;
+    padding: 12px 28px; font-size: 14px; font-weight: bold;
+    font-family: var(--font); border: 2px solid rgba(255,255,255,0.5);
+    cursor: pointer; text-decoration: none;
+  }
+
+  /* ── IMAGE PLACEHOLDER ── */
+  .img-ph {
+    background: var(--bg-mid); border: 2px dashed var(--border-dk);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--text-light); font-size: 12px; gap: 10px;
+    text-align: center; padding: 20px;
+  }
+  .ph-icon {
+    width: 44px; height: 44px; position: relative;
+  }
+  .ph-icon::before, .ph-icon::after {
+    content: ''; position: absolute;
+    background: var(--border-dk); top: 50%; left: 0;
+    width: 100%; height: 2px; transform-origin: center;
+  }
+  .ph-icon::before { transform: translateY(-50%) rotate(45deg); }
+  .ph-icon::after  { transform: translateY(-50%) rotate(-45deg); }
+
+  hr.divider { border: none; border-top: 1px solid var(--bg-mid); margin: 0; }
+
+  /* ═══════════════ TOP BAR ═══════════════ */
+  .top-bar {
+    background: var(--bg-darker); color: #eee;
+    font-size: 12px; padding: 7px 40px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .top-bar .social { margin-left: auto; display: flex; gap: 8px; }
+  .top-bar .social span {
+    width: 20px; height: 20px; background: var(--bg-dark);
+    border-radius: 50%; display: inline-block;
+  }
+
+  /* ═══════════════ PROMO BAR ═══════════════ */
+  .promo-bar {
+    background: var(--bg-dark); color: var(--text-dark);
+    padding: 9px 40px; font-size: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+  }
+  .promo-bar button {
+    border: 2px solid var(--text-dark); background: transparent;
+    padding: 3px 12px; font-size: 11px; font-weight: bold;
+    cursor: pointer; font-family: var(--font);
+  }
+  .promo-bar .close { margin-left: auto; cursor: pointer; font-weight: bold; }
+
+  /* ═══════════════ HEADER ═══════════════ */
+  .site-header {
+    background: var(--bg); border-bottom: 2px solid var(--bg-mid);
+    padding: 14px 40px; display: flex; align-items: center;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo-wf { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: bold; text-decoration: none; color: var(--text-dark); }
+  .logo-box { width: 38px; height: 38px; background: var(--bg-mid); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--text-light); font-weight: bold; }
+  nav { margin-left: 32px; display: flex; gap: 22px; }
+  nav a { color: var(--text-mid); text-decoration: none; font-size: 13px; font-weight: bold; }
+  .header-cta-wrap { margin-left: auto; }
+
+  /* ═══════════════ HERO ═══════════════ */
+  .hero {
+    background: var(--bg-darker); padding: 0;
+    min-height: 500px; display: flex; align-items: stretch;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; padding: 80px 40px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 56px; align-items: center; width: 100%;
+  }
+  .hero h1 { color: #fff; }
+  .hero .sub  { font-size: 16px; color: #ddd; margin-bottom: 18px; }
+  .hero .copy { font-size: 14px; color: #bbb; margin-bottom: 28px; }
+  .hero-ctas  { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 26px; }
+  .trust-row  { display: flex; gap: 16px; flex-wrap: wrap; }
+  .trust-pill { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #ccc; font-weight: bold; }
+  .trust-pill .tick { width: 16px; height: 16px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--text-dark); flex-shrink: 0; }
+  .hero-img-col { display: flex; align-items: center; }
+  .hero-img-col .img-ph { width: 100%; aspect-ratio: 4/3; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.35); }
+  .hero-img-col .img-ph .ph-icon::before,
+  .hero-img-col .img-ph .ph-icon::after { background: rgba(255,255,255,0.3); }
+
+  /* ═══════════════ CAROUSEL ═══════════════ */
+  .why-choose { background: var(--bg); }
+  .why-header { text-align: center; margin-bottom: 44px; }
+  .carousel-track-outer { overflow: hidden; border: 1px solid var(--bg-mid); }
+  .carousel-track { display: flex; transition: transform 0.4s ease; }
+  .carousel-slide {
+    min-width: 100%; display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: center; padding: 40px; background: var(--bg-light);
+  }
+  .slide-img { aspect-ratio: 4/3; }
+  .slide-content h3 { font-size: 20px; margin-bottom: 12px; }
+  .carousel-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 22px; }
+  .carousel-btn { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--border); background: var(--bg); color: var(--text-mid); font-size: 16px; cursor: pointer; font-family: var(--font); }
+  .carousel-dots { display: flex; gap: 7px; }
+  .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--bg-mid); border: none; cursor: pointer; }
+  .carousel-dot.active { background: var(--bg-darker); }
+  .why-cta { text-align: center; margin-top: 40px; }
+
+  /* ═══════════════ SERVICES ═══════════════ */
+  .services { background: var(--bg-light); }
+  .services-header { text-align: center; max-width: 660px; margin: 0 auto 44px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .service-card { background: var(--bg); border: 1px solid var(--bg-mid); padding: 24px 20px; }
+
+  /* ═══════════════ PROCESS ═══════════════ */
+  .process { background: var(--bg); }
+  .process-header { text-align: center; margin-bottom: 48px; }
+  .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; margin-bottom: 40px; }
+  .process-steps::before { content: ''; position: absolute; top: 32px; left: 12.5%; width: 75%; height: 2px; background: var(--bg-mid); z-index: 0; }
+  .step { text-align: center; position: relative; z-index: 1; padding: 0 14px; }
+  .step-num { width: 64px; height: 64px; background: var(--bg-mid); border: 3px solid var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: bold; margin: 0 auto 18px; }
+  .step h3 { margin-bottom: 6px; }
+  .step p { font-size: 13px; }
+  .process-cta { text-align: center; }
+
+  /* ═══════════════ REVIEWS ═══════════════ */
+  .reviews { background: var(--bg-light); border-top: 1px solid var(--bg-mid); border-bottom: 1px solid var(--bg-mid); padding: 56px 40px; }
+  .reviews-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 32px; align-items: flex-start; }
+  .reviews-badge { flex-shrink: 0; text-align: center; padding: 24px 26px; background: var(--bg); border: 1px solid var(--bg-mid); min-width: 160px; }
+  .badge-label { font-size: 16px; font-weight: bold; letter-spacing: 1px; margin-bottom: 6px; }
+  .stars-row { font-size: 20px; letter-spacing: 2px; color: var(--bg-darker); margin-bottom: 6px; }
+  .review-count { font-size: 11px; color: var(--text-light); margin-bottom: 10px; }
+  .google-logo-wf { font-size: 17px; font-weight: bold; color: var(--text-mid); letter-spacing: 1px; }
+  .reviews-cards { display: flex; gap: 16px; overflow: hidden; }
+  .review-card { background: var(--bg); border: 1px solid var(--bg-mid); padding: 20px; flex: 1; min-width: 0; }
+  .reviewer-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .reviewer-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--bg-dark); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 14px; flex-shrink: 0; }
+  .reviewer-name { font-weight: bold; font-size: 13px; }
+  .reviewer-date { font-size: 11px; color: var(--text-light); }
+  .reviewer-g { margin-left: auto; }
+  .g-dot { width: 18px; height: 18px; background: var(--bg-mid); border-radius: 50%; display: inline-block; }
+  .review-stars { font-size: 14px; color: var(--bg-darker); margin-bottom: 8px; }
+  .review-text { font-size: 12px; color: var(--text-mid); line-height: 1.6; }
+  .read-more { font-size: 11px; color: var(--text-light); margin-top: 8px; cursor: pointer; }
+
+  /* ═══════════════ FOOTER ═══════════════ */
+  footer { background: var(--bg-darker); color: #ddd; padding: 48px 40px 28px; }
+  .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+  .footer-logo { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: bold; color: #fff; margin-bottom: 12px; }
+  .footer-logo-box { width: 30px; height: 30px; background: var(--bg-mid); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--text-mid); font-weight: bold; }
+  footer p { font-size: 12px; color: #bbb; }
+  footer ul { list-style: none; }
+  footer ul li { font-size: 12px; color: #bbb; margin-bottom: 7px; }
+  .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 18px; display: flex; gap: 20px; flex-wrap: wrap; font-size: 11px; color: #999; align-items: center; }
+  .footer-bottom a { color: #999; text-decoration: none; }
+  .footer-bottom .reg { margin-left: auto; }
+</style>
+</head>
+<body>
+
+<!-- META BANNER -->
+<div class="wf-banner">Wireframe — Bookkeeping Services Northampton | N-Accounting</div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <span>📞 01604 330129</span>
+  <span>✉ info@n-accounting.co.uk</span>
+  <div class="social">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
+
+<!-- PROMO BAR -->
+<div class="promo-bar">
+  Download your free limited company tax guide and subscribe to our monthly tax tips newsletter.
+  <button>Download Now</button>
+  <span class="close">✕</span>
+</div>
+
+<!-- STICKY HEADER -->
+<header class="site-header">
+  <a href="#" class="logo-wf">
+    <div class="logo-box">LOGO</div>
+    N-Accounting
+  </a>
+  <nav>
+    <a href="#">About Us ▾</a>
+    <a href="#">Articles</a>
+    <a href="#">Case Studies</a>
+    <a href="#">Client Area ▾</a>
+    <a href="#">Free Stuff</a>
+    <a href="#">Contact</a>
+  </nav>
+  <div class="header-cta-wrap">
+    <a href="#" class="btn">Book a Discovery Call</a>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 1 — HERO
+════════════════════════════════════════ -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-inner">
+    <div>
+      <span class="sec-label" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.4);">Section 1 — Hero</span>
+      <h1>Bookkeeping Services in Northampton</h1>
+      <p class="sub">Simplify your finances with reliable bookkeeping and local expertise from N-Accounting.</p>
+      <p class="copy">Our town has a unique economic environment and requires bespoke financial solutions. At N-Accounting we understand the challenges that businesses and self-employed individuals face. Our bookkeeping services ensure your financial management needs are met with precision so you can focus on growing your business.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn" style="background:#fff;color:#222;border-color:#fff;">Book a Discovery Call</a>
+        <a href="#" class="btn-ghost">Speak to an Expert</a>
+      </div>
+      <div class="trust-row">
+        <span class="trust-pill"><span class="tick">✓</span> Local Northampton Accountants</span>
+        <span class="trust-pill"><span class="tick">✓</span> Small Business Specialists</span>
+        <span class="trust-pill"><span class="tick">✓</span> Personalised Financial Support</span>
+      </div>
+    </div>
+    <div class="hero-img-col">
+      <div class="img-ph" style="width:100%;aspect-ratio:4/3;">
+        <div class="ph-icon"></div>
+        <span>Image: Accountant reviewing finances with laptop</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 2 — WHY CHOOSE (CAROUSEL)
+════════════════════════════════════════ -->
+<section class="why-choose" style="padding:64px 40px;">
+  <div class="container">
+    <div class="why-header">
+      <span class="sec-label">Section 2 — Why Choose (Carousel)</span>
+      <h2>Why Northampton Businesses Choose N-Accounting</h2>
+    </div>
+
+    <div class="carousel-track-outer">
+      <div class="carousel-track" id="whyTrack">
+
+        <div class="carousel-slide">
+          <div class="img-ph slide-img"><div class="ph-icon"></div><span>Image placeholder</span></div>
+          <div class="slide-content">
+            <h3>Local Expertise</h3>
+            <p>Our team understands the Northampton business landscape. From market traders to tech startups, we offer bookkeeping services tailored to local businesses.</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="img-ph slide-img"><div class="ph-icon"></div><span>Image placeholder</span></div>
+          <div class="slide-content">
+            <h3>Personalised Service</h3>
+            <p>We treat every client as a partner, tailoring our bookkeeping approach to your specific financial needs and goals.</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="img-ph slide-img"><div class="ph-icon"></div><span>Image placeholder</span></div>
+          <div class="slide-content">
+            <h3>Reliable Financial Support</h3>
+            <p>Our commitment to accuracy, transparency and timeliness ensures your financial records are always dependable.</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="img-ph slide-img"><div class="ph-icon"></div><span>Image placeholder</span></div>
+          <div class="slide-content">
+            <h3>Efficiency That Saves Time &amp; Money</h3>
+            <p>Streamlined processes and modern technology ensure your bookkeeping is accurate and efficient.</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="img-ph slide-img"><div class="ph-icon"></div><span>Image placeholder</span></div>
+          <div class="slide-content">
+            <h3>Proactive Financial Support</h3>
+            <p>We identify potential financial issues early and provide solutions before they become problems.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="whyPrev">&#8592;</button>
+      <div class="carousel-dots" id="whyDots"></div>
+      <button class="carousel-btn" id="whyNext">&#8594;</button>
+    </div>
+
+    <div class="why-cta">
+      <a href="#" class="btn">Book a Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var track = document.getElementById('whyTrack');
+  var dotsContainer = document.getElementById('whyDots');
+  var slides = track.querySelectorAll('.carousel-slide');
+  var total = slides.length, current = 0;
+  slides.forEach(function(_, i) {
+    var d = document.createElement('button');
+    d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', function() { goTo(i); });
+    dotsContainer.appendChild(d);
+  });
+  function goTo(n) {
+    current = (n + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dotsContainer.querySelectorAll('.carousel-dot').forEach(function(d, i) { d.classList.toggle('active', i === current); });
+  }
+  document.getElementById('whyPrev').addEventListener('click', function() { goTo(current - 1); });
+  document.getElementById('whyNext').addEventListener('click', function() { goTo(current + 1); });
+})();
+</script>
+
+<hr class="divider">
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 3 — SERVICES
+════════════════════════════════════════ -->
+<section class="services" aria-label="Services">
+  <div class="container">
+    <div class="services-header">
+      <span class="sec-label">Section 3 — What's Included</span>
+      <h2>What Our Bookkeeping Services Include</h2>
+      <p>Bookkeeping is the backbone of a business. At N-Accounting we make money management simpler and more effective for small and medium sized businesses through our bookkeeping and accounting services.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Capture Every Transaction</h3>
+        <p>We record every sale, purchase, expense and income to ensure no financial detail is missed.</p>
+      </div>
+      <div class="service-card">
+        <h3>Organise &amp; Categorise</h3>
+        <p>Financial data is structured clearly so you always know where money is coming from and going.</p>
+      </div>
+      <div class="service-card">
+        <h3>Maintain Accurate Ledgers</h3>
+        <p>Each financial category has its own ledger to ensure clear and reliable records at all times.</p>
+      </div>
+      <div class="service-card">
+        <h3>Reconcile Accounts</h3>
+        <p>We compare financial records with bank statements to ensure complete accuracy and consistency.</p>
+      </div>
+      <div class="service-card">
+        <h3>Financial Reporting</h3>
+        <p>Balance sheets and profit &amp; loss statements give a clear snapshot of business performance.</p>
+      </div>
+      <div class="service-card">
+        <h3>Support Decision-Making</h3>
+        <p>Clear financial data enables informed strategic decisions to help your business grow confidently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 4 — PROCESS
+════════════════════════════════════════ -->
+<section class="process" aria-label="Process">
+  <div class="container">
+    <div class="process-header">
+      <span class="sec-label">Section 4 — Process</span>
+      <h2>A Simple Process</h2>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Discovery Call</h3>
+        <p>We begin by understanding your business, financial processes and bookkeeping requirements.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Financial Setup</h3>
+        <p>We organise your accounts and ensure transactions are categorised correctly from the start.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Ongoing Bookkeeping</h3>
+        <p>We record transactions, reconcile accounts and maintain accurate financial records continuously.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Reports &amp; Insights</h3>
+        <p>You receive clear financial reports and insights to help guide your business decisions.</p>
+      </div>
+    </div>
+    <div class="process-cta">
+      <a href="#" class="btn">Book Your Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 5 — GOOGLE REVIEWS
+════════════════════════════════════════ -->
+<div class="reviews" aria-label="Google Reviews">
+  <div class="reviews-inner">
+    <div class="reviews-badge">
+      <div class="badge-label">EXCELLENT</div>
+      <div class="stars-row">★★★★★</div>
+      <div class="review-count">Based on 56 reviews</div>
+      <div class="google-logo-wf">Google</div>
+    </div>
+    <div class="reviews-cards">
+      <div class="review-card">
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">D</div>
+          <div>
+            <div class="reviewer-name">Dean Redmond</div>
+            <div class="reviewer-date">11 August 2023</div>
+          </div>
+          <div class="reviewer-g"><span class="g-dot"></span></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I've been with N-Accounting since January 2018, it doesn't matter who I speak to there the service is always 10/10 which shows what a top level…</p>
+        <div class="read-more">Read more</div>
+      </div>
+      <div class="review-card">
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">C</div>
+          <div>
+            <div class="reviewer-name">Charlotte Wilson</div>
+            <div class="reviewer-date">21 November 2022</div>
+          </div>
+          <div class="reviewer-g"><span class="g-dot"></span></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I had a query which I didn't understand. I spoke to Owen who was really helpful. Initially I sent an email and he was quick to respond…</p>
+        <div class="read-more">Read more</div>
+      </div>
+      <div class="review-card">
+        <div class="reviewer-row">
+          <div class="reviewer-avatar">M</div>
+          <div>
+            <div class="reviewer-name">Martina Iacobson</div>
+            <div class="reviewer-date">9 November 2022</div>
+          </div>
+          <div class="reviewer-g"><span class="g-dot"></span></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text" style="color:#bbb;font-style:italic;">This user only left a rating.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer aria-label="Footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-box">LOGO</div>
+        N-Accounting
+      </div>
+      <p>Northampton based accounting firm providing high quality tax, advisory and bookkeeping services to small businesses across the region.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li>Bookkeeping</li><li>Tax Planning</li><li>VAT Returns</li><li>Payroll</li><li>Accounts</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li>About Us</li><li>Articles</li><li>Case Studies</li><li>Free Stuff</li><li>Contact</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>01604 330129</li>
+        <li>info@n-accounting.co.uk</li>
+        <li style="margin-top:8px;">[Office Address, Northampton]</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Cookie Policy</a>
+    <a href="#">Terms &amp; Conditions</a>
+    <span class="reg">N-Accounting Ltd · Company No. [XXXXXXXX] · Registered in England &amp; Wales</span>
+  </div>
+</footer>
+
+</body>
+</html>
